@@ -6,7 +6,13 @@ class Math {
 
     //Use the // to create single line comments to either add info or to take out code for debugging
 
-    System.out.println("Hello world!");
+    System.out.println("multiples of 3 from 1 to 100:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) { // Check if the number is odd (remainder is not 0 when divided by 2)
+                System.out.print(i + " ");
+            }
+          }
+    System.out.print(100);  
 
     //We will be using System.out.println and System.out.print throughout the year. Try using both below to see what the difference is!
 
@@ -55,9 +61,22 @@ class Math {
 
     //All multiples of 3 from 1 to 100
 
+    System.out.println("multiples of 3 from 1 to 100:");
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0) { // Check if the number is odd (remainder is not 0 when divided by 2)
+                System.out.print(i + " ");
+            }
+          }
+    System.out.print(100);  
+
 
 
 
     //Starting at 1000, print on the same line (with a - [hypthen] between each) all of the numbers that end in 0 going down to 0
+  for(int k=1000 ; k>=0; k-=10){
+    System.out.print(k + "-");
   }
+  }
+
+
 }
