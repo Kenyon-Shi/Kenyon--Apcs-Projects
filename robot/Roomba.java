@@ -13,7 +13,7 @@ public class Roomba implements Directions {
 		int totalBeepers = cleaner.cleanRoom(worldName, 7, 6);
 		System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
 
-		World.setDelay(1);
+		World.setDelay(10);
 	}
 	// declared here so it is visible in all the methods!
 	private Robot roomba;
@@ -24,7 +24,13 @@ public class Roomba implements Directions {
 	public int cleanRoom(String worldName, int startX, int startY) {
 			roomba = new Robot(7,6,East,0);
 			
-		while (roomba.nextToABeeper())
+		while (roomba.frontIsClear()){
+			while (roomba.nextToABeeper()){
+				roomba.pickBeeper();
+			}
+			roomba.move();
+}
+
 {
 	// body action
 	roomba.pickBeeper();
