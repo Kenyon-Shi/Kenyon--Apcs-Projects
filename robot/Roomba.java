@@ -23,18 +23,15 @@ public class Roomba implements Directions {
 
 	public int cleanRoom(String worldName, int startX, int startY) {
 			roomba = new Robot(7,6,East,0);
-			
-		while (roomba.frontIsClear()){
-			while (roomba.nextToABeeper()){
-				roomba.pickBeeper();
-			}
-			roomba.move();
-}
+			while (roomba.frontIsClear()) 
+					{
+						roomba.move();
+						while (roomba.nextToABeeper()){
+							roomba.pickBeeper();
+						} 
+				
+			}	
 
-{
-	// body action
-	roomba.pickBeeper();
-}
 		
 		
 	
