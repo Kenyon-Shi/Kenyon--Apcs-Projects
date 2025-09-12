@@ -48,9 +48,23 @@ largestPile = pileCount;
 
 
 }
-
+while (!roomba.frontIsClear() && roomba.facingEast()) {
+roomba.turnLeft();
+roomba.move();
+moves++;
+area++;
+roomba.turnLeft();
 }
-
+while (!roomba.frontIsClear() && roomba.facingWest()) {
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.move();
+moves++;
+area++;
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.turnLeft();
 }
 }
 //}
@@ -75,3 +89,4 @@ return totalBeepers;
 }
 
 }
+
