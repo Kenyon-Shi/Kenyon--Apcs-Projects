@@ -44,3 +44,4 @@ public class PigLatinTranslator {
     // private static String capitalizeFirstLetter(String input)
 
 }
+translateWord
