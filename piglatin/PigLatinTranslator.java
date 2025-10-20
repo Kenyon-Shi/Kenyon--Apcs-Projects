@@ -15,7 +15,7 @@ public class PigLatinTranslator {
     public static String translate(String input) {
         System.out.println("  -> translate('" + input + "')");
 
-        String result = "";
+        String result = "v";
 
         // TODO: translate a string input, store in result.
         // The input to this function could be any English string.
@@ -44,4 +44,3 @@ public class PigLatinTranslator {
     // private static String capitalizeFirstLetter(String input)
 
 }
-translateWord
