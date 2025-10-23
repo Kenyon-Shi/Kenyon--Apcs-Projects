@@ -7,17 +7,12 @@ public class TestSuite {
         int total = 12;
 
         // Single Words
-        // Vowel first letter
         score += basicTest("eat", "eatay");
-        // Single consonant
         score += basicTest("pig", "igpay");
-        // Double consonant
         score += basicTest("trash", "ashtray");
-
-        // "null" :)
         score += basicTest("null", "ullnay");
 
-        // Capitalization (keep caps as-is except transfer first letter style)
+        // Capitalization
         score += basicTest("Trash", "Ashtray");
         score += basicTest("trash", "ashtray");
         score += basicTest("TrAsH", "AsHtray");
@@ -26,6 +21,7 @@ public class TestSuite {
         score += basicTest("Trash.", "Ashtray.");
         score += basicTest("clean-cut", "ean-cutclay");
 
+        // Empty and spaces
         score += basicTest("", "");
         score += basicTest("    ", "");
 
@@ -47,8 +43,12 @@ public class TestSuite {
             System.out.println(" PASS: '" + input + "' -> '" + expected + "'");
             return 1;
         } else {
-            System.out.println(" FAIL: '" + input + "', '" + result + "' != '" + expected + "'");
+            System.out.println(" FAIL: '" + input + "', got '" + result + "', expected '" + expected + "'");
             return 0;
         }
+    }
+
+    public static void main(String[] args) {
+        run();
     }
 }
