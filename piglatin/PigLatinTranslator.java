@@ -1,76 +1,90 @@
 package piglatin;
+import java.util.Scanner;
 
 public class PigLatinTranslator {
 
-    // Translate a whole Book, line by line
+    /* ---------- Translate entire book ---------- */
     public static Book translate(Book input) {
-        Book translatedBook = new Book();
-        translatedBook.setTitle(input.getTitle());
+        Book outBook = new Book();
+        outBook.setTitle(input.getTitle() + " (Pig-Latin)");
 
-        // iterate through each line of the Book
         for (int i = 0; i < input.getLineCount(); i++) {
-            String line = input.getLine(i);
-            String translatedLine = translate(line); // call the string method
-            translatedBook.appendLine(translatedLine);
+            String original = input.getLine(i);
+            String pigLine = translate(original);  // App.java expects THIS version
+            outBook.appendLine(pigLine);
         }
-
-        return translatedBook;
+        return outBook;
     }
 
-    // Translate a string (sentence or multiple words)
+    /* ---------- Translate one line ---------- */
     public static String translate(String input) {
-        if (input == null || input.trim().isEmpty()) return "";
+        System.out.println("  -> translate('" + input + "')");
+        if (input == null || input.isEmpty()) return "";
 
-        String[] words = input.split("\\s+");
         StringBuilder result = new StringBuilder();
+        Scanner sc = new Scanner(input);
 
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                if (result.length() > 0) result.append(" ");
-                result.append(translateWord(word));
-            }
+        while (sc.hasNext()) {
+            if (result.length() > 0) result.append(" ");
+            result.append(translateWord(sc.next()));
         }
+
+        sc.close();
         return result.toString();
     }
 
-    // Translate a single word to Pig Latin
+    /* ---------- Translate single word ---------- */
     private static String translateWord(String word) {
-        if (word == null || word.isEmpty()) return "";
+        if (word.isEmpty()) return word;
 
-        String lower = word.toLowerCase();
+        // 1. Separate trailing punctuation
+        int end = word.length();
+        while (end > 0 && !Character.isLetter(word.charAt(end - 1))) {
+            end--;
+        }
+        String letters = word.substring(0, end);
+        String punctuation = word.substring(end);
 
-        // Handle punctuation at the end
-        String punctuation = "";
-        if (!Character.isLetter(lower.charAt(lower.length() - 1))) {
-            punctuation = lower.substring(lower.length() - 1);
-            lower = lower.substring(0, lower.length() - 1);
+        // 2. Record capitalization pattern
+        boolean[] upper = new boolean[letters.length()];
+        for (int i = 0; i < letters.length(); i++) {
+            upper[i] = Character.isUpperCase(letters.charAt(i));
         }
 
-        int firstVowel = -1;
-        for (int i = 0; i < lower.length(); i++) {
-            char c = lower.charAt(i);
-            if ("aeiou".indexOf(c) >= 0) {
-                firstVowel = i;
+        // 3. Convert to lowercase
+        letters = letters.toLowerCase();
+
+        // 4. Find first vowel
+        int vowelPos = -1;
+        for (int i = 0; i < letters.length(); i++) {
+            char ch = letters.charAt(i);
+            if ("aeiou".indexOf(ch) >= 0) {
+                vowelPos = i;
                 break;
             }
         }
 
-        String result;
-        if (firstVowel == 0) {
-            result = lower + "ay"; // starts with vowel
-        } else if (firstVowel > 0) {
-            result = lower.substring(firstVowel) + lower.substring(0, firstVowel) + "ay";
+        // 5. Build Pig Latin version
+        String pig;
+        if (vowelPos == 0) {
+            pig = letters + "ay";  // starts with vowel
+        } else if (vowelPos > 0) {
+            pig = letters.substring(vowelPos) + letters.substring(0, vowelPos) + "ay";
         } else {
-            result = lower + "ay"; // no vowels
+            pig = letters + "ay";  // no vowels
         }
 
-        // ✅ Fix capitalization correctly
-        if (Character.isUpperCase(word.charAt(0))) {
-            result = Character.toUpperCase(result.charAt(0)) + result.substring(1);
-        } else {
-            result = result.toLowerCase();
+        // 6. Restore capitalization
+        StringBuilder rebuilt = new StringBuilder();
+        for (int i = 0; i < pig.length(); i++) {
+            char ch = pig.charAt(i);
+            if (i < upper.length && upper[i] && Character.isLetter(ch)) {
+                rebuilt.append(Character.toUpperCase(ch));
+            } else {
+                rebuilt.append(ch);
+            }
         }
 
-        return result + punctuation;
+        return rebuilt.toString() + punctuation;
     }
 }

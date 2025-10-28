@@ -28,21 +28,39 @@ public class App {
         // Focus on TestSuite until you get a score of 5 or higher.
         if (score > 4)
         {
-            // Starter book
-            Book input = new Book();
+            // ---------- BOOK #1: Romeo and Juliet ----------
+            Book book1 = new Book();
+            book1.readFromUrl("Romeo and Juliet", "https://www.gutenberg.org/cache/epub/1513/pg1513.txt");
 
-            // Start with a "test" book based on a string.
-            // Get this to work, and all the tests to pass first.
-            input.readFromString("TestBook", "Dog\nCat\nMouse");
+            System.out.println("\n--- Original Romeo and Juliet ---");
+            book1.printLines(0, 2);
 
-            // Example reading from a URL
-            //input.readFromUrl("Romeo and Juliette", "https://gutenberg.pglaf.org/cache/epub/1513/pg1513.txt");
+            Book translated1 = PigLatinTranslator.translate(book1);
 
-            input.printlines(0,2);
-            Book output = PigLatinTranslator.translate(input);
-            output.printlines(0,2);
-            output.writeToFile("test.txt");
+            System.out.println("\n--- Pig Latin Romeo and Juliet ---");
+            translated1.printLines(0, 2);
+
+            translated1.writeToFile("RomeoAndJuliet_PigLatin.txt");
+            System.out.println("✅ Saved: RomeoAndJuliet_PigLatin.txt");
+
+
+            // ---------- BOOK #2: New Book (pg77136) ----------
+            Book book2 = new Book();
+            book2.readFromUrl("Project Gutenberg Book 77136", "https://www.gutenberg.org/cache/epub/77136/pg77136.txt");
+
+            System.out.println("\n--- Original Book 77136 ---");
+            book2.printLines(0, 2);
+
+            Book translated2 = PigLatinTranslator.translate(book2);
+
+            System.out.println("\n--- Pig Latin Book 77136 ---");
+            translated2.printLines(0, 2);
+
+            translated2.writeToFile("Book77136_PigLatin.txt");
+            System.out.println("✅ Saved: Book77136_PigLatin.txt");
+
+
+            System.out.println("\n🎉 Translation complete for both books!");
         }
     }
 }
-
