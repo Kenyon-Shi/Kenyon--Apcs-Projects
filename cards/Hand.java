@@ -1,6 +1,6 @@
 public class Hand {
 
-    private Card[] cards;
+    private Card[] cards
     private int size;
 
     public Hand(int max) {
