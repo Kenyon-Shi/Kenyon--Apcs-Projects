@@ -1,4 +1,6 @@
-import java.util.Random;
+package cards;
+
+import java.util.Random;   // <-- REQUIRED
 
 public class Deck {
 
