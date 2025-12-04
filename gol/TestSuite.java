@@ -6,7 +6,7 @@ public class TestSuite {
     public static void run()
     {
         System.out.println("Starting TestSuite");
-        boolean pass = true;
+        boolean pass = rue;
 
         GameOfLife board = new GameOfLife(5, 5);
 
