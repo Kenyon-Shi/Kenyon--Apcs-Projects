@@ -57,7 +57,7 @@ public class GameOfLife implements Board {
                     if (neighbors == 3)
                         next[x][y] = 1;
                     else
-                        next[x][y] = 0
+                        next[x][y] = 0;
                 }
             }
         }
