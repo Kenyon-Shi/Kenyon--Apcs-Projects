@@ -24,7 +24,7 @@ public class Main {
     {
         // TODO: make this return an actual random array of the provided length.
         int[] a = {10, 5, 3, 2};
-        return a;
+        return a
     }
 
 }
