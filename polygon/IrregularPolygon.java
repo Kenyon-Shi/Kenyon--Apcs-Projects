@@ -16,7 +16,7 @@ public class IrregularPolygon {
         // TODO: Add a point to the IrregularPolygon.
     }
 
-    public double perimeter() {
+    public double perimter() {
         // TODO: Calculate the perimeter.
         return 3.14;
     }
