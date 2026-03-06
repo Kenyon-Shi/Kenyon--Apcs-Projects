@@ -9,7 +9,7 @@ public class Main {
         //    - SelectionSort.java
         //
         //  2. Add a method to class Main to generate a random array.
-        //  3. Provide randm input to test suite and ensure your implementations
+        //  3. Provide random input to test suite and ensure your implementations
         //     of InsertionSort and Selection sort continue to work.
         //  4. Increase the loop count for TestSuite to get better performance results.
 
