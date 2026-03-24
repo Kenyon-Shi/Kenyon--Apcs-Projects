@@ -39,7 +39,7 @@ public class IntegerStack {
     {
         if ((depth >= 0) && (depth < stack.length))
         {
-            stack[depth++] = value;
+            stack[depth++] = value
         }
     }
 
