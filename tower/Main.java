@@ -10,7 +10,7 @@ public class Main {
         //solver.solve(model);
 
         // Run test suite
-        TestSuite test = new TestSuite()
+        TestSuite test = new TestSuite();
         test.run();
 
     }
