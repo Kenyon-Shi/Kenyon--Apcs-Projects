@@ -11,7 +11,7 @@ public class Main {
 
         // Run test suite
         TestSuite test = new TestSuite();
-        test.run();
+        test.run()
 
     }
 }
