@@ -11,11 +11,7 @@
 			"installMaven": "false",
 			"installGradle": "false"
 		},
-		"ghcr.io/devcontainers/features/desktop-lite:1": {
-			"password": "vscode",
-			"webPort": "6080",
-			"vncPort": "5901"
-		}
+		"ghcr.io/devcontainers/features/desktop-lite:1": {}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
